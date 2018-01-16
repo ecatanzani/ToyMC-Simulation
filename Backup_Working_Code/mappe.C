@@ -476,6 +476,16 @@ TVirtualPad* drawpull(TH2* hratio, TH2* hnum, TH2* hden){
 
   double pullmin = 0;
   double pullmax = 0;
+
+  ////////////////
+  /*
+    This forst two loops are just needed because I wanto to obtain max and min value for the pull histo.
+    These two values will be needed to proprly set the pool's histos max and min value for the X axis.
+
+
+    The second loop just fills poll's histo ! So obviously I need a couple of loops.
+  */
+  ///////////////
   
   for (int xx=1; xx<=hratio->GetNbinsX(); xx++) {
     for (int yy=1; yy<=hratio->GetNbinsY(); yy++) {
