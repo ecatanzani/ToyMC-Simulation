@@ -479,7 +479,7 @@ TVirtualPad* drawpull(TH2* hratio, TH2* hnum, TH2* hden){
 
   ////////////////
   /*
-    This forst two loops are just needed because I wanto to obtain max and min value for the pull histo.
+    This first two loops are just needed because I wanto to obtain max and min value for the pull histo.
     These two values will be needed to proprly set the pool's histos max and min value for the X axis.
 
 
