@@ -63,7 +63,7 @@ void fill_maps_for_one_second(ofstream &out_file,UShort_t n_ev,Int_t &n_poisson_
     What we build is the histogram of the difference between the really observed particles and the simulated particle (related to the same bin) divided the square root of the simulated particles for bin (that is, at the end, the standard deviation of the number of simulated events for each bin). Adding more events to both of the maps, we expect that the distribution shrinks, at limit becoming a delta distribution (a spike !!)
     !!!!!!!!!!!!!!!!!!!!!! That ratio behaves as a chi^2 !!!!!!!!!!!!!!!!!!
     What we expect on that distribution is that it respects a normal distribution, with mean 0 (if it has not mean 0 it means we have 2 maps with 2 different numbers of total events and that is not correct) and sigma 1.
-    That's the shuffling method. If the fit of the obtained histo with the normal distribution is good we are ok, otherwise we have some problem with the simulated map.
+†©    That's the shuffling method. If the fit of the obtained histo with the normal distribution is good we are ok, otherwise we have some problem with the simulated map.
     
     Remembering the bag mentioned before, what we obtain is a distribution that not fits well with the normal one, and so probably the cause is the correlation mentioned before in the simlation of the anisotropy with the w weight.
     
@@ -325,5 +325,11 @@ void from_celestial_to_galactic(Double_t ra,Double_t dec,Double_t &l,Double_t &b
 
   b = br*TMath::RadToDeg();
   l = lr*TMath::RadToDeg();
+
+}
+
+void filling_h_cloned(TH2D* h_cloned,TH2D* h_original) {
+
+  h_cloned->FillRandom(h_original,h_original->GetEntries());
 
 }

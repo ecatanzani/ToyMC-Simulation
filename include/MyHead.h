@@ -33,21 +33,21 @@ using namespace std;
 #define EPS 1.e-12
 
 const static UInt_t random_seed = 9;
-const static Int_t number_SBI_files = 10;
+const static Int_t number_SBI_files = 3;
 static Int_t multiplication_factor = 10;
 
 const static time_t time_stamp=time(0);     //Setting timestamp for the out files 
 
 //////////////////////////// Input path for SBI data files: 
 
-const static TString sbi_path = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/toymc-anisotropy-svn/trunk/SBI_data";      
+const static TString sbi_path = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/Stuff/toymc-anisotropy-svn/trunk/SBI_data";      
 const static TString sbi_subsample = "010";
 const static string string_sbi_subsample = "010";      //This is usefull into the function that writes log files and output ROOT files
 
 //////////////////////////// Outh paths for logs and ROOT files:             !!!!!!!!!!!!!!! ATTENCTION !!! Here pat is written for TRUNK directory ! Modify it if necessary !!!!
 
-const static string output_log = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/toymc-anisotropy-svn/trunk/logs/";
-const static string output_root = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/toymc-anisotropy-svn/trunk/results/"; 
+const static string output_log = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/Stuff/toymc-anisotropy-svn/trunk/logs/";
+const static string output_root = "/Users/enrico/Documents/Università/Magistrale/Tesi/MyCode/Stuff/toymc-anisotropy-svn/trunk/results/"; 
 
 //////////////////////////////////////////////////////////////////////////////////                         
 
@@ -70,3 +70,4 @@ extern void AtVect_To_AtPolarVect(double in_vector[],AtPolarVect &vector_out);
 extern void invert_AtPolarVect_direction(AtPolarVect vector_out,AtPolarVect &vector_out_inv);
 extern void AtPolarVect_to_vector(AtPolarVect &input_polar,double out_array[]);
 extern void from_celestial_to_galactic(Double_t ra,Double_t dec,Double_t &l,Double_t &b);
+extern void filling_h_cloned(TH2D* h_cloned,TH2D* h_original);

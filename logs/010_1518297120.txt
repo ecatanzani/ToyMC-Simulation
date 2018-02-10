@@ -2,9 +2,9 @@
 
 ////////////////////////// Simulation Parameters //////////////////////////
 
-Simulation timestamp: 1516382927
+Simulation timestamp: 1518297120
 Simulation TRandom3 seed: 9
-Number of readed SBI files: 10
+Number of readed SBI files: 3
 Multiplication factor for infinite statistic: 10
 
 *

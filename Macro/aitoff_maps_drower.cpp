@@ -131,14 +131,28 @@ void draw_maps(const TString results_alias) {
   TH2* ani_map_shuf_2 = (TH2D*)(input_results_file->Get("ani_map_shuf_2"));
   draw_single_map(ani_map_shuf_2,logz);
 
-  
 
+  ///////// Draw cloned maps
+
+  TH2* C_ani_map_inf_stat = (TH2D*)(input_results_file->Get("C_ani_map_inf_stat"));  
+  TH2* C_ani_map_real_stat_1 = (TH2D*)(input_results_file->Get("C_ani_map_real_stat_1"));
+  TH2* C_ani_map_real_stat_2 = (TH2D*)(input_results_file->Get("C_ani_map_real_stat_2"));
+  TH2* C_ani_map_shuf_1 = (TH2D*)(input_results_file->Get("C_ani_map_shuf_1"));
+  TH2* C_ani_map_shuf_2 = (TH2D*)(input_results_file->Get("C_ani_map_shuf_2"));
+  
+  TH2* C_iso_map_inf_stat = (TH2D*)(input_results_file->Get("C_iso_map_inf_stat"));  
+  TH2* C_iso_map_real_stat_1 = (TH2D*)(input_results_file->Get("C_iso_map_real_stat_1"));
+  TH2* C_iso_map_real_stat_2 = (TH2D*)(input_results_file->Get("C_iso_map_real_stat_2"));
+  TH2* C_iso_map_shuf_1 = (TH2D*)(input_results_file->Get("C_iso_map_shuf_1"));
+  TH2* C_iso_map_shuf_2 = (TH2D*)(input_results_file->Get("C_iso_map_shuf_2"));
+
+  
   /////////////////////////////////////////////////////////////////////////////// MAPS COMPARISON AND PULL BUILDING
 
-  Int_t n_pool=4;
+  Int_t n_pool=10;
   TH1D *h_pull[n_pool];
 
-  /////////// Isotropic Vs Isotropic with real statistic
+  /////////// Isotropic Vs Isotropic with real statistic 1/2
 
   TH2* iso_map_vs_iso_map_real_stat = (TH2*)(iso_map_real_stat_1->Clone("iso_map_vs_iso_map_real_stat"));
   iso_map_vs_iso_map_real_stat->Divide(iso_map_real_stat_2);
@@ -148,6 +162,19 @@ void draw_maps(const TString results_alias) {
   iso_map_vs_iso_map_real_stat->GetZaxis()->SetTitle("Ratio");
   draw_single_map(iso_map_vs_iso_map_real_stat,logz);
   draw_pull(iso_map_vs_iso_map_real_stat,iso_map_real_stat_1,iso_map_real_stat_2,h_pull,0);
+
+  
+  /////////// Isotropic Vs Isotropic shuffled with real statistic 1
+  
+  TH2* iso_map_vs_iso_map_shuf_1 = (TH2*)(iso_map_real_stat_1->Clone("iso_map_vs_iso_map_shuf_1"));
+  iso_map_vs_iso_map_shuf_1->Divide(iso_map_shuf_1);
+  iso_map_vs_iso_map_shuf_1->SetMinimum(0);
+  iso_map_vs_iso_map_shuf_1->SetMaximum(2);
+  iso_map_vs_iso_map_shuf_1->SetTitle("Ratio Isotropic/Isotropic Shuffled (real statistic 1)");
+  iso_map_vs_iso_map_shuf_1->GetZaxis()->SetTitle("Ratio");
+  draw_single_map(iso_map_vs_iso_map_shuf_1,logz);
+  draw_pull(iso_map_vs_iso_map_shuf_1,iso_map_real_stat_1,iso_map_shuf_1,h_pull,1);
+
   
   /////////// Anisotropic Vs Isotropic with infinite statistic
   
@@ -158,7 +185,7 @@ void draw_maps(const TString results_alias) {
   ani_map_vs_iso_map_inf_stat->SetTitle("Ratio Anisotropic/Isotropic (infinite statistic)");
   ani_map_vs_iso_map_inf_stat->GetZaxis()->SetTitle("Ratio");
   draw_single_map(ani_map_vs_iso_map_inf_stat,logz);
-  draw_pull(ani_map_vs_iso_map_inf_stat,ani_map_inf_stat,iso_map_inf_stat,h_pull,1);
+  draw_pull(ani_map_vs_iso_map_inf_stat,ani_map_inf_stat,iso_map_inf_stat,h_pull,2);
 
 
   /////////// Anisotropic Vs Isotropic with real statistic 1
@@ -170,7 +197,7 @@ void draw_maps(const TString results_alias) {
   ani_map_vs_iso_map_real_stat_1->SetTitle("Ratio Anisotropic/Isotropic (real statistic 1)");
   ani_map_vs_iso_map_real_stat_1->GetZaxis()->SetTitle("Ratio");
   draw_single_map(ani_map_vs_iso_map_real_stat_1,logz);
-  draw_pull(ani_map_vs_iso_map_real_stat_1,ani_map_real_stat_1,iso_map_real_stat_1,h_pull,2);
+  draw_pull(ani_map_vs_iso_map_real_stat_1,ani_map_real_stat_1,iso_map_real_stat_1,h_pull,3);
   
 
   /////////// Anisotropic Vs Anisotropic Shuffled with real statistic 1
@@ -182,8 +209,65 @@ void draw_maps(const TString results_alias) {
   ani_map_vs_ani_map_shuf_1->SetTitle("Ratio Anisotropic/Anisotropic Shuffled (real statistic 1)");
   ani_map_vs_ani_map_shuf_1->GetZaxis()->SetTitle("Ratio");
   draw_single_map(ani_map_vs_ani_map_shuf_1,logz);
-  draw_pull(ani_map_vs_ani_map_shuf_1,ani_map_real_stat_1,ani_map_shuf_1,h_pull,3);                   
+  draw_pull(ani_map_vs_ani_map_shuf_1,ani_map_real_stat_1,ani_map_shuf_1,h_pull,4);                   
 
+
+  //********** Cloned maps **************
+
+  /////////// Cloned Isotropic Vs Isotropic with real statistic 1/2
+
+  TH2* C_iso_map_vs_iso_map_real_stat = (TH2*)(C_iso_map_real_stat_1->Clone("C_iso_map_vs_iso_map_real_stat"));
+  C_iso_map_vs_iso_map_real_stat->Divide(C_iso_map_real_stat_2);
+  C_iso_map_vs_iso_map_real_stat->SetMinimum(0);
+  C_iso_map_vs_iso_map_real_stat->SetMaximum(2);
+  C_iso_map_vs_iso_map_real_stat->SetTitle("Ratio Isotropic/Isotropic - Cloned Maps - (real statistic)");
+  C_iso_map_vs_iso_map_real_stat->GetZaxis()->SetTitle("Ratio");
+  draw_single_map(C_iso_map_vs_iso_map_real_stat,logz);
+  draw_pull(C_iso_map_vs_iso_map_real_stat,C_iso_map_real_stat_1,C_iso_map_real_stat_2,h_pull,5);
+
+  /////////// Cloned Isotropic Vs Isotropic shuffled with real statistic 1
+  
+  TH2* C_iso_map_vs_iso_map_shuf_1 = (TH2*)(C_iso_map_real_stat_1->Clone("C_iso_map_vs_iso_map_shuf_1"));
+  C_iso_map_vs_iso_map_shuf_1->Divide(C_iso_map_shuf_1);
+  C_iso_map_vs_iso_map_shuf_1->SetMinimum(0);
+  C_iso_map_vs_iso_map_shuf_1->SetMaximum(2);
+  C_iso_map_vs_iso_map_shuf_1->SetTitle("Ratio Isotropic/Isotropic Shuffled (real statistic 1)");
+  C_iso_map_vs_iso_map_shuf_1->GetZaxis()->SetTitle("Ratio");
+  draw_single_map(C_iso_map_vs_iso_map_shuf_1,logz);
+  draw_pull(C_iso_map_vs_iso_map_shuf_1,C_iso_map_real_stat_1,C_iso_map_shuf_1,h_pull,6);
+
+  /////////// Anisotropic Vs Isotropic with infinite statistic
+  
+  TH2* C_ani_map_vs_iso_map_inf_stat = (TH2*)(C_ani_map_inf_stat->Clone("C_ani_map_vs_iso_map_inf_stat"));
+  C_ani_map_vs_iso_map_inf_stat->Divide(C_iso_map_inf_stat);
+  C_ani_map_vs_iso_map_inf_stat->SetMinimum(0);
+  C_ani_map_vs_iso_map_inf_stat->SetMaximum(2);
+  C_ani_map_vs_iso_map_inf_stat->SetTitle("Ratio Anisotropic/Isotropic (infinite statistic)");
+  C_ani_map_vs_iso_map_inf_stat->GetZaxis()->SetTitle("Ratio");
+  draw_single_map(C_ani_map_vs_iso_map_inf_stat,logz);
+  draw_pull(C_ani_map_vs_iso_map_inf_stat,C_ani_map_inf_stat,C_iso_map_inf_stat,h_pull,7);
+
+  /////////// Anisotropic Vs Isotropic with real statistic 1
+  
+  TH2* C_ani_map_vs_iso_map_real_stat_1 = (TH2*)(C_ani_map_real_stat_1->Clone("C_ani_map_vs_iso_map_real_stat_1"));
+  C_ani_map_vs_iso_map_real_stat_1->Divide(C_iso_map_real_stat_1);
+  C_ani_map_vs_iso_map_real_stat_1->SetMinimum(0);
+  C_ani_map_vs_iso_map_real_stat_1->SetMaximum(2);
+  C_ani_map_vs_iso_map_real_stat_1->SetTitle("Ratio Anisotropic/Isotropic (real statistic 1)");
+  C_ani_map_vs_iso_map_real_stat_1->GetZaxis()->SetTitle("Ratio");
+  draw_single_map(C_ani_map_vs_iso_map_real_stat_1,logz);
+  draw_pull(C_ani_map_vs_iso_map_real_stat_1,C_ani_map_real_stat_1,C_iso_map_real_stat_1,h_pull,8);
+  
+  /////////// Anisotropic Vs Anisotropic Shuffled with real statistic 1
+  
+  TH2* C_ani_map_vs_ani_map_shuf_1 = (TH2*)(C_ani_map_real_stat_1->Clone("C_ani_map_vs_ani_map_shuf_1"));
+  C_ani_map_vs_ani_map_shuf_1->Divide(ani_map_shuf_1);
+  C_ani_map_vs_ani_map_shuf_1->SetMinimum(0);
+  C_ani_map_vs_ani_map_shuf_1->SetMaximum(2);
+  C_ani_map_vs_ani_map_shuf_1->SetTitle("Ratio Anisotropic/Anisotropic Shuffled (real statistic 1)");
+  C_ani_map_vs_ani_map_shuf_1->GetZaxis()->SetTitle("Ratio");
+  draw_single_map(C_ani_map_vs_ani_map_shuf_1,logz);
+  draw_pull(C_ani_map_vs_ani_map_shuf_1,C_ani_map_real_stat_1,C_ani_map_shuf_1,h_pull,9);
   
   //////////////////////////// Writing Aitoff maps
 
@@ -202,8 +286,14 @@ void draw_maps(const TString results_alias) {
     exit(-1);
   }
   pools_results->cd();
+  gStyle->SetOptStat(1111);
   
   for(Int_t p_idx=0; p_idx<n_pool; p_idx++) {
+    if(p_idx==0)
+      cout<<"\n\nStandard hstos gaussian fits\n\n";
+    if(p_idx==5)
+      cout<<"\n\nCloned histos gaussian fits\n\n";
+
     h_pull[p_idx]->Fit("gaus");
     h_pull[p_idx]->Write();
   }
@@ -393,7 +483,8 @@ void draw_pull(TH2* h_ratio,TH2* h_num,TH2* h_den,TH1D* h_pull[],Int_t idx_pool)
     } //end for yy
   } //end for xx
 
-  h_pull[idx_pool] = new TH1D(Form("%s_pull", h_ratio->GetName()), Form("Pull of %s", h_ratio->GetTitle()), 4*3*5*7, 1.2*pull_min, 1.2*pull_max);
+  //h_pull[idx_pool] = new TH1D(Form("%s_pull", h_ratio->GetName()), Form("Pull of %s", h_ratio->GetTitle()), 4*3*5*7, 1.2*pull_min, 1.2*pull_max);
+  h_pull[idx_pool] = new TH1D(Form("%s_pull", h_ratio->GetName()), Form("Pull of %s", h_ratio->GetTitle()),150, 1.2*pull_min, 1.2*pull_max);
   h_pull[idx_pool]->GetXaxis()->SetTitle("(y_{rec}-y_{ref})/(#sqrt{#sigma^{2}_{rec}+#sigma^{2}_{ref}})");
   h_pull[idx_pool]->GetYaxis()->SetTitle("Entries");
 
