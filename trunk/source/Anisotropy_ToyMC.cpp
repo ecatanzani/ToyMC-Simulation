@@ -86,22 +86,20 @@ int main(int argc,char *argv[]) {
 
   // ---------- Anisotropic maps with infinite and realistic statistics
   
-  TH2D* ani_map_inf_stat = new TH2D("ani_map_inf_stat","Anisotropic Map (infinite statistic); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  TH2D* ani_map_real_stat_1 = new TH2D("ani_map_real_stat_1","Anisotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  TH2D* ani_map_real_stat_2 = new TH2D("ani_map_real_stat_2","Anisotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-
-  TH2D* ani_map_shuf_1 = new TH2D("ani_map_shuf_1","Shuffled Anisotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  TH2D* ani_map_shuf_2 = new TH2D("ani_map_shuf_2","Shuffled Anisotropic Map (real statistic 2; Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries", n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* ani_map_inf_stat = new TH2D("ani_map_inf_stat","Anisotropic Map (infinite statistic); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* ani_map_real_stat_1 = new TH2D("ani_map_real_stat_1","Anisotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* ani_map_real_stat_2 = new TH2D("ani_map_real_stat_2","Anisotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* ani_map_shuf_1 = new TH2D("ani_map_shuf_1","Shuffled Anisotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* ani_map_shuf_2 = new TH2D("ani_map_shuf_2","Shuffled Anisotropic Map (real statistic 2; Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries", n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
 
 
   // ---------- Isotropic maps with infinite and realistic statistics 
   
-  TH2D* iso_map_inf_stat = new TH2D("iso_map_inf_stat","Isotropic Map (infinite statistic); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  TH2D* iso_map_real_stat_1 = new TH2D("iso_map_real_stat_1","Isotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  TH2D* iso_map_real_stat_2 = new TH2D("iso_map_real_stat_2","Isotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  
-  TH2D* iso_map_shuf_1 = new TH2D("iso_map_shuf_1","Shuffled Isotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
-  TH2D* iso_map_shuf_2 = new TH2D("iso_map_shuf_2","Shuffled Isotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* iso_map_inf_stat = new TH2D("iso_map_inf_stat","Isotropic Map (infinite statistic); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* iso_map_real_stat_1 = new TH2D("iso_map_real_stat_1","Isotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* iso_map_real_stat_2 = new TH2D("iso_map_real_stat_2","Isotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* iso_map_shuf_1 = new TH2D("iso_map_shuf_1","Shuffled Isotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  static TH2D* iso_map_shuf_2 = new TH2D("iso_map_shuf_2","Shuffled Isotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
 
 
   // ---------- Maps of Satellite Pointing, Exposure, Events and Rate
@@ -111,6 +109,35 @@ int main(int argc,char *argv[]) {
   TH2D* nevents = new TH2D("nevents","Events; Geographic Longitude (#circ);  Geographic Latitude (#circ); Entries", 180, -180, 180, 90, -90.0, 90.0);
   TH2D* rate = new TH2D("rate","Rate; Geographic Longitude (#circ);  Geographic Latitude (#circ); Rate (hz)", 180, -180, 180, 90, -90.0, 90.0);
 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  // --------- Statistical independent "cloned" histos for a better ststistical pool analysis
+
+  /*
+    These histograms are created to better study the pool variance! 
+    I Create these histograms that are "clones" of the coorespetvely TH2Ds, by the function FillRandom !
+    In that way I create statistical independent histograms that ae identical to the original ones.
+
+   */
+
+  // ---------- Anisotropic maps with infinite and realistic statistics
+  
+  TH2D* C_ani_map_inf_stat = new TH2D("C_ani_map_inf_stat","Cloned Anisotropic Map (infinite statistic); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_ani_map_real_stat_1 = new TH2D("C_ani_map_real_stat_1","Cloned Anisotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_ani_map_real_stat_2 = new TH2D("C_ani_map_real_stat_2","Cloned Anisotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_ani_map_shuf_1 = new TH2D("C_ani_map_shuf_1","Cloned Shuffled Anisotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_ani_map_shuf_2 = new TH2D("C_ani_map_shuf_2","Cloned Shuffled Anisotropic Map (real statistic 2; Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries", n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+
+
+  // ---------- Isotropic maps with infinite and realistic statistics
+  
+  TH2D* C_iso_map_inf_stat = new TH2D("C_iso_map_inf_stat","Cloned Isotropic Map (infinite statistic); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_iso_map_real_stat_1 = new TH2D("C_iso_map_real_stat_1","Cloned Isotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_iso_map_real_stat_2 = new TH2D("C_iso_map_real_stat_2","Cloned Isotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_iso_map_shuf_1 = new TH2D("C_iso_map_shuf_1","Cloned Shuffled Isotropic Map (real statistic 1); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+  TH2D* C_iso_map_shuf_2 = new TH2D("C_iso_map_shuf_2","Cloned Shuffled Isotropic Map (real statistic 2); Galactic Longitude (#circ);  Galactic Latitude (#circ); Entries",n_bin_lon,lon_bin_min,lon_bin_max,n_bin_lat,binning);
+
+  
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   chain_entries = tree->GetEntries();
@@ -157,6 +184,23 @@ int main(int argc,char *argv[]) {
   }
 
   rate->Divide(orbit);
+
+  /////////////////////////////////////////////////// Filling "cloned" histos
+
+  filling_h_cloned(C_iso_map_inf_stat,iso_map_inf_stat);
+  filling_h_cloned(C_iso_map_real_stat_1,iso_map_real_stat_1);
+  filling_h_cloned(C_iso_map_real_stat_2,iso_map_real_stat_2);
+  filling_h_cloned(C_iso_map_shuf_1,iso_map_shuf_1);
+  filling_h_cloned(C_iso_map_shuf_2,iso_map_shuf_2);
+
+  filling_h_cloned(C_ani_map_inf_stat,ani_map_inf_stat);
+  filling_h_cloned(C_ani_map_real_stat_1,ani_map_real_stat_1);
+  filling_h_cloned(C_ani_map_real_stat_2,ani_map_real_stat_2);
+  filling_h_cloned(C_ani_map_shuf_1,ani_map_shuf_1);
+  filling_h_cloned(C_ani_map_shuf_2,ani_map_shuf_2);
+  
+  //////////////////////////////////////////////////////////////////////////
+  
   
   cout<<"\n\nSimulation Completed !\n\n";
   output_log_file << "\n\nSimulation Completed !\n\n";
