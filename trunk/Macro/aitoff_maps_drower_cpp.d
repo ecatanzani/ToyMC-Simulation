@@ -94,5 +94,8 @@
 ./aitoff_maps_drower_cpp.so: /Applications/root/include/TCanvas.h
 ./aitoff_maps_drower_cpp.so: /Applications/root/include/TAttCanvas.h
 ./aitoff_maps_drower_cpp.so: /Applications/root/include/TCanvasImp.h
+./aitoff_maps_drower_cpp.so: /Applications/root/include/TRandom3.h
+./aitoff_maps_drower_cpp.so: /Applications/root/include/TRandom.h
+./aitoff_maps_drower_cpp.so: /Applications/root/include/Math/TRandomEngine.h
 ./aitoff_maps_drower_cpp.so: /Applications/root/include/RVersion.h /Applications/root/include/RConfig.h /Applications/root/include/TClass.h /Applications/root/include/TDictAttributeMap.h /Applications/root/include/TInterpreter.h /Applications/root/include/TROOT.h /Applications/root/include/TBuffer.h /Applications/root/include/TMemberInspector.h /Applications/root/include/TError.h /Applications/root/include/RtypesImp.h /Applications/root/include/TIsAProxy.h /Applications/root/include/TFileMergeInfo.h /Applications/root/include/TCollectionProxyInfo.h /Applications/root/bin/rootcling
 aitoff_maps_drower_cpp__ROOTBUILDVERSION= 6.12/04
